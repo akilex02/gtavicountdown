@@ -5,14 +5,14 @@
   <title>GTA VI Countdown</title>
   <!-- Viewport esencial para móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="https://cdn.discordapp.com/attachments/716160349078028318/1369048298941452398/gta6logo.png?ex=681a7116&is=68191f96&hm=5e797bbfa714803defe69765f87a40c8078efdac2408c749f3f024ac536604cf&" type="image/png">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d6/Grand_Theft_Auto_VI_logo_%28with_gradient%29.svg" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
       min-height: 100vh; /* Usa min-height en lugar de height */
-      background-image: url('https://cdn.discordapp.com/attachments/716160349078028318/1369049103463616602/rockstar-games-official-street-artwork-with-trees-and-background.png?ex=681a71d5&is=68192055&hm=adfbfbd2a0d1fb3f235a7f1275fb56c87082d67a93857a81e40596d0794eb7a9&');
+      background-image: url('https://rockstarintel.com/wp-content/uploads/2025/05/b74b36e2b61c3c2382e0a504f95e387651f406d72e68d278.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed; /* Fondo fijo en scroll */
@@ -71,6 +71,25 @@
       right: 20px;
     }
     
+    /* Estilos para el botón de CanalYT */
+    .akilex-logo {
+      height: min(8vw, 50px); /* Máximo 50px */
+      width: auto;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+    }
+	
+	/* Estilos para el botón de CanalYT */
+    .budja-logo {
+      height: min(8vw, 50px); /* Máximo 50px */
+      width: auto;
+      position: fixed;
+      bottom: 20px;
+      left: 70px;
+    }
+    
+    
     /* Media Queries para ajustes específicos */
     @media (max-width: 768px) {
       #contador {
@@ -93,11 +112,17 @@
 </head>
 <body>
   <a href="https://www.rockstargames.com/VI" target="_blank" class="rockstar-logo-link">
-    <img src="https://cdn.discordapp.com/attachments/716160349078028318/1369046378067525713/R.png?ex=681a6f4c&is=68191dcc&hm=e6671a7e95de843a1990968058da5af2733ab424f8bf6d0bf46122485f29b4e7&" alt="Rockstar Logo" class="rockstar-logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Rockstar_Games_Logo.svg" alt="Rockstar Logo" class="rockstar-logo">
+  </a>
+  <a href="https://www.youtube.com/@AkiLeX_" target="_blank" class="akilex-logo-link">
+    <img src="https://i.imgur.com/0PnvjUl_d.webp?maxwidth=760&fidelity=grand" alt="AkiLex" class="akilex-logo">
+  </a>
+  <a href="https://www.youtube.com/@budja8" target="_blank" class="budja8-logo-link">
+    <img src="https://i.imgur.com/TEAVWQb.png" alt="AkiLex" class="budja-logo">
   </a>
   
   <div class="contenedor">
-    <img src="https://cdn.discordapp.com/attachments/716160349078028318/1369047712846053469/gta6.png?ex=681a708a&is=68191f0a&hm=7a9587bbcf98e9ae3936daf714c1c6a7b4521aeb2eef701700fa145612561db8&" alt="GTA VI Logo" class="logo-gta">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Grand_Theft_Auto_VI_logo_%28with_gradient%29.svg" alt="GTA VI Logo" class="logo-gta">
     <div id="texto">Grand Theft Auto VI será lanzado en:</div>
     <div class="fondo-blur">
       <div id="contador"></div>
