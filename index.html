@@ -3,19 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <title>GTA VI Countdown</title>
-  <!-- Viewport esencial para móviles -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/d/d6/Grand_Theft_Auto_VI_logo_%28with_gradient%29.svg" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
   <style>
+
+    /* ---------- NAV ESTILO ---------- */
+	.nav-rstar {
+	  width: 100%;
+	  padding: 15px 0;
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  z-index: 2000;
+
+	  /* Fondo semitransparente + blur */
+	  background: linear-gradient(90deg,
+		rgba(64, 95, 214, 0.55),
+		rgba(104, 90, 209, 0.55),
+		rgba(202, 81, 193, 0.55),
+		rgba(254, 78, 183, 0.55),
+		rgba(246, 103, 141, 0.55),
+		rgba(235, 135, 87, 0.55)
+	  );
+	  backdrop-filter: blur(10px);
+
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+
+	  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	.nav-rstar ul {
+	  list-style: none;
+	  display: flex;
+	  gap: 40px;
+	  margin: 0;
+	  padding: 0;
+	}
+
+	.nav-rstar li {
+	  color: white;
+	  font-size: 1rem;
+	  cursor: pointer;
+	  transition: opacity 0.2s ease, transform 0.2s ease;
+	  text-shadow: 1px 1px 3px black;
+	  font-family: "Cal Sans", sans-serif;
+	}
+
+	.nav-rstar li:hover {
+	  opacity: 0.8;
+	  transform: translateY(-2px);
+	}
+
+	/* Responsivo */
+	@media(max-width: 650px) {
+	  .nav-rstar ul {
+		gap: 20px;
+	  }
+	  .nav-rstar li {
+		font-size: 0.85rem;
+	  }
+	}
+
+	@media(max-width: 450px) {
+	  .nav-rstar ul {
+		gap: 12px;
+	  }
+	  .nav-rstar li {
+		font-size: 0.75rem;
+	  }
+	}
+
+    /* ---------- FIN DEL NAV ---------- */
+
+
     body {
       margin: 0;
       padding: 0;
-      min-height: 100vh; /* Usa min-height en lugar de height */
-      background-image: url('https://rockstarintel.com/wp-content/uploads/2025/05/b74b36e2b61c3c2382e0a504f95e387651f406d72e68d278.jpg');
+      min-height: 100vh;
+      background-image: url('imgs/background1.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* Fondo fijo en scroll */
+      background-attachment: fixed;
       color: white;
       display: flex;
       justify-content: center;
@@ -27,73 +98,97 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 90%; /* Ancho relativo */
-      max-width: 1200px; /* Límite en pantallas grandes */
+      width: 90%;
+      max-width: 1200px;
       padding: 20px;
       box-sizing: border-box;
+      margin-top: 80px; /* espacio para el nav */
     }
     
     .fondo-blur {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      padding: 3vw; /* Padding relativo al ancho de la pantalla */
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+      padding: 1vw;
       border-radius: 20px;
       width: 100%;
       text-align: center;
     }
+	
+	.barra-contenedor {
+	  width: 80%;
+	  height: 50px;
+	  margin-top: 30px;
+	  border-radius: 20px;
+	  overflow: hidden;
+	  background: rgba(0, 0, 0, 0.3);
+	  backdrop-filter: blur(10px);
+	  display: flex;
+	  align-items: center;
+	}
+
+	#barra {
+	  height: 100%;
+	  width: 0%;
+	  border-radius: 20px;
+	  background: linear-gradient(90deg, #685ad1, #ca51c1, #fe4eb7, #f6678d, #eb8757);
+	  transition: width 0.9s ease;
+	}
+
+	.porcentaje-texto {
+	  font-size: 2em;
+	  margin-top: 15px;
+	  color: white;
+	  text-shadow: 2px 2px 5px black;
+	  text-align: center;
+	}
+
     
     #contador {
-      font-size: 6vw; /* Tamaño relativo al ancho de pantalla */
+      font-size: 6vw;
       text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
       margin: 0;
     }
     
     #texto {
-      font-size: 2rem; /* Unidad rem para escalabilidad */
+      font-size: 2rem;
       margin-bottom: 20px;
       text-align: center;
       color: white;
       text-shadow: 1px 1px 4px black;
     }
     
-    /* Estilos para el logo de GTA VI */
     .logo-gta {
-      width: min(30vw, 200px); /* Se adapta pero no supera 200px */
+      width: min(30vw, 200px);
       margin-bottom: 20px;
     }
     
-    /* Estilos para el botón de Rockstar */
     .rockstar-logo {
-      height: min(8vw, 50px); /* Máximo 50px */
+      height: min(8vw, 50px);
       width: auto;
       position: fixed;
       bottom: 20px;
       right: 20px;
     }
     
-    /* Estilos para el botón de CanalYT */
     .akilex-logo {
-      height: min(8vw, 50px); /* Máximo 50px */
+      height: min(8vw, 50px);
       width: auto;
       position: fixed;
       bottom: 20px;
       left: 20px;
     }
 	
-	/* Estilos para el botón de CanalYT */
-    .budja-logo {
-      height: min(8vw, 50px); /* Máximo 50px */
+	.budja-logo {
+      height: min(8vw, 50px);
       width: auto;
       position: fixed;
       bottom: 20px;
       left: 70px;
     }
     
-    
-    /* Media Queries para ajustes específicos */
     @media (max-width: 768px) {
       #contador {
-        font-size: 10vw; /* Más grande en móviles */
+        font-size: 10vw;
       }
       .fondo-blur {
         padding: 20px;
@@ -111,26 +206,44 @@
   </style>
 </head>
 <body>
+
+  <!-- ----------   NAV   ---------- -->
+  <nav class="nav-rstar">
+    <ul>
+      <li data-bg="imgs/background1.jpg">Escena 1</li>
+      <li data-bg="imgs/background2.jpeg">Escena 2</li>
+      <li data-bg="imgs/background3.jpeg">Escena 3</li>
+      <li data-bg="imgs/background4.webp">Escena 4</li>
+	  <li data-bg="imgs/background5.jpeg">Escena 5</li>
+    </ul>
+  </nav>
+  <!-- ---------- FIN NAV ---------- -->
+
+
   <a href="https://www.rockstargames.com/VI" target="_blank" class="rockstar-logo-link">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Rockstar_Games_Logo.svg" alt="Rockstar Logo" class="rockstar-logo">
+    <img src="imgs/Rockstar_Games_Logo.svg" alt="Rockstar Logo" class="rockstar-logo">
   </a>
   <a href="https://www.youtube.com/@AkiLeX_" target="_blank" class="akilex-logo-link">
     <img src="https://i.imgur.com/0PnvjUl_d.webp?maxwidth=760&fidelity=grand" alt="AkiLex" class="akilex-logo">
   </a>
   <a href="https://www.youtube.com/@budja8" target="_blank" class="budja8-logo-link">
-    <img src="https://i.imgur.com/TEAVWQb.png" alt="AkiLex" class="budja-logo">
+    <img src="https://i.imgur.com/TEAVWQb.png" alt="Budja8" class="budja-logo">
   </a>
   
   <div class="contenedor">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Grand_Theft_Auto_VI_logo_%28with_gradient%29.svg" alt="GTA VI Logo" class="logo-gta">
+    <img src="imgs/gta6-logo.svg" alt="GTA VI Logo" class="logo-gta">
     <div id="texto">Grand Theft Auto VI será lanzado en:</div>
     <div class="fondo-blur">
       <div id="contador"></div>
     </div>
+	<div class="fondo-blur barra-contenedor">
+	  <div id="barra"></div>
+	</div>
+	<div class="porcentaje-texto">0%</div>
   </div>
 
   <script>
-    const objetivo = new Date("2026-05-26T00:00:00").getTime();
+    const objetivo = new Date("2026-11-19T00:00:00").getTime();
     const intervalo = setInterval(() => {
       const ahora = new Date().getTime();
       const diferencia = objetivo - ahora;
@@ -148,6 +261,41 @@
 
       document.getElementById("contador").textContent = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
     }, 1000);
+	
+	function actualizarBarraObjetivo() {
+	  const ahora = new Date().getTime();
+	  const inicio = new Date("2025-11-06T00:00:00").getTime();
+	  const objetivo = new Date("2026-11-19T00:00:00").getTime();
+
+	  const total = objetivo - inicio;
+	  const progreso = ahora - inicio;
+
+	  let porcentaje = (progreso / total) * 100;
+
+	  porcentaje = Math.min(Math.max(porcentaje, 0), 100);
+
+	  document.getElementById("barra").style.width = porcentaje + "%";
+
+	  document.querySelector(".porcentaje-texto").textContent =
+		Math.floor(porcentaje) + "%";
+	}
+
+	setInterval(actualizarBarraObjetivo, 1000);
+	actualizarBarraObjetivo();
+
+
+    /* ---------- JS PARA CAMBIAR BACKGROUND DESDE EL NAV ---------- */
+    const botones = document.querySelectorAll(".nav-rstar li");
+
+    botones.forEach(boton => {
+      boton.addEventListener("click", () => {
+        const imagen = boton.getAttribute("data-bg");
+        document.body.style.transition = "background-image 0.6s ease";
+        document.body.style.backgroundImage = `url(${imagen})`;
+      });
+    });
+    /* ---------- FIN ---------- */
+
   </script>
 </body>
 </html>
